@@ -1,0 +1,201 @@
+/* Carga local de Grenze Gotisch: los encabezados no dependen de Google Fonts. */
+@font-face{font-family:'Grenze Gotisch';src:url('fonts/GrenzeGotisch-600.ttf') format('truetype');font-style:normal;font-weight:600;font-display:swap}
+@font-face{font-family:'Grenze Gotisch';src:url('fonts/GrenzeGotisch-700.ttf') format('truetype');font-style:normal;font-weight:700;font-display:swap}
+@font-face{font-family:'Grenze Gotisch';src:url('fonts/GrenzeGotisch-800.ttf') format('truetype');font-style:normal;font-weight:800;font-display:swap}
+/* COLORES Y TIPOGRAFIA: cambia estas variables para actualizar el tema de toda la web. */
+:root{--ink:#16120f;--ink2:#241d18;--gold:#c8a24a;--gold2:#e0bd6a;--cream:#f7f2e8;--muted:#6f655a;--card:#fff;--line:#e6dccb;--bg:#f7f2e8;--text:#16120f;--serif:'Grenze Gotisch','UnifrakturCook',Georgia,serif;--sans:'Inter',system-ui,-apple-system,Segoe UI,sans-serif}
+/* Colores automaticos para visitantes que usan el modo oscuro del dispositivo. */
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#16120f;--text:#f2ebdd;--card:#241d18;--line:#3a3028;--muted:#b3a794}}
+/* BASE: margenes, ancho de contenido, desplazamiento y estilos generales de texto. */
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;scroll-padding-top:calc(76px + env(safe-area-inset-top,0px))}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.6}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--ink);z-index:60}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1140px;margin:0 auto;padding:0 20px}
+section{padding:84px 0}
+h1,h2,h3{font-family:var(--serif);line-height:1.15;margin:0}
+h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:12px}
+.eyebrow{color:var(--gold);letter-spacing:.18em;text-transform:uppercase;font-size:.78rem;font-weight:600}
+.lead{color:var(--muted);max-width:620px;margin:0 0 40px}
+/* BOTONES: tamano, color y aspecto normal, secundario y al pasar el cursor. */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:999px;font-weight:600;border:2px solid var(--gold);background:var(--gold);color:var(--ink);cursor:pointer;font:inherit;font-weight:600;transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-2px);background:var(--gold2)}
+.btn.ghost{background:transparent;color:#fff}
+.btn.ghost:hover{background:rgba(255,255,255,.1)}
+/* CABECERA: posicion, marca, tamano del logo y navegacion de escritorio. */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(22,18,15,.94);backdrop-filter:blur(8px);color:#fff}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{font-family:var(--serif);font-size:1.35rem;font-weight:700;display:flex;align-items:center;gap:10px}
+.logo span{color:var(--gold)}
+.logo img{width:38px;height:48px;object-fit:contain}
+nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0;font-size:.92rem}
+nav a:hover{color:var(--gold)}
+.right{display:flex;align-items:center;gap:14px}
+/* Estado abierto/cerrado y boton de menu para pantallas pequenas. */
+.open{font-size:.78rem;display:flex;align-items:center;gap:6px;padding:6px 12px;border:1px solid #4a3f35;border-radius:999px}
+.dot{width:9px;height:9px;border-radius:50%;background:#8a8a8a}
+.open.on .dot{background:#3ddc84;box-shadow:0 0 8px #3ddc84}
+.burger{display:none;background:none;border:0;width:44px;height:44px;cursor:pointer;padding:10px}
+.burger i{display:block;height:2px;background:#fff;margin:6px 0;transition:.3s}
+.burger.x i:nth-child(1){transform:translateY(8px) rotate(45deg)}
+.burger.x i:nth-child(2){opacity:0}
+.burger.x i:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+/* PORTADA: fondo, columnas, textos y tamano de la imagen grande del logo. */
+.hero{background:radial-gradient(circle at 80% 20%,#3a2c1b 0,transparent 45%),var(--ink);color:#fff;padding:110px 0 90px;position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(2.3rem,6vw,4rem)}
+.hero h1 em{color:var(--gold);font-style:italic}
+.hero p{color:#d6cbb8;font-size:1.1rem;max-width:520px;margin:20px 0 30px}
+.ctas{display:flex;gap:14px;flex-wrap:wrap}
+.hero-art{display:flex;justify-content:center}
+.hero-art img{width:min(420px,88%);max-height:450px;object-fit:contain;opacity:.95;animation:float 5s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-30px)}}
+.trust{display:flex;gap:26px;flex-wrap:wrap;margin-top:34px;color:#d6cbb8;font-size:.9rem}
+.trust b{color:var(--gold);font-family:var(--serif);font-size:1.5rem;display:block}
+/* CUADRICULAS: distribucion general, tarjetas de ventajas y tarjetas de servicios. */
+.grid{display:grid;gap:20px}
+.g4{grid-template-columns:repeat(4,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+.ben{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px}
+.alt .ben h3,.alt .mini-step h3{color:var(--text)}
+.ben .ic{width:46px;height:46px;border-radius:12px;background:var(--ink);color:var(--gold);display:grid;place-items:center;font-size:1.3rem;margin-bottom:14px}
+.ben h3{font-size:1.15rem;margin-bottom:6px}
+.ben p{margin:0;color:var(--muted);font-size:.94rem}
+.srv-link{display:block;height:100%;border-radius:20px;color:inherit;text-decoration:none}
+.srv-link:focus-visible{outline:3px solid var(--gold);outline-offset:4px}
+.srv{height:100%;background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s,border-color .25s}
+.srv-link:hover .srv,.srv-link:focus-visible .srv{transform:translateY(-6px);border-color:var(--gold);box-shadow:0 18px 40px rgba(0,0,0,.18)}
+.srv .top{height:150px;display:grid;place-items:center;font-size:3.2rem;background:linear-gradient(135deg,var(--ink),var(--ink2));color:var(--gold)}
+.srv .body{padding:24px;display:flex;flex-direction:column;gap:10px;flex:1}
+.srv p{margin:0;color:var(--muted);font-size:.95rem}
+.srv ul{margin:0;padding-left:18px;color:var(--muted);font-size:.9rem}
+.srv .lnk{align-self:flex-start;margin-top:auto;padding:9px 14px;border:2px solid var(--gold);border-radius:3px;background:var(--gold);color:var(--ink);font-weight:700;transition:background .2s,color .2s}
+.srv-link:hover .lnk,.srv-link:focus-visible .lnk{background:var(--ink);color:var(--gold)}
+/* Fondos oscuros y tarjetas de opiniones. */
+.alt{background:var(--ink);color:#fff}
+.alt .lead{color:#cfc4b1}
+.rev{background:var(--card);color:var(--text);border:1px solid var(--line);border-radius:18px;padding:24px}
+.stars{color:var(--gold);letter-spacing:3px}
+.rev p{margin:10px 0 14px;color:var(--text)}
+.rev b{font-size:.9rem}
+.score{display:flex;align-items:center;gap:12px;margin-bottom:30px;flex-wrap:wrap}
+.score strong{font-family:var(--serif);font-size:2.6rem}
+/* CONTACTO: columnas, tarjetas, datos, horario y mapa ilustrativo. */
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px}
+.info li{list-style:none;display:flex;gap:12px;margin-bottom:14px}
+.info{padding:0;margin:0 0 20px}
+.hours{width:100%;border-collapse:collapse;font-size:.92rem}
+.hours td{padding:7px 0;border-bottom:1px dashed var(--line)}
+.hours td:last-child{text-align:right;color:var(--muted)}
+.map-preview{display:block;width:100%;height:190px;margin-top:18px;border:1px solid var(--line);background:#e8e1d3}
+.map-link{display:inline-flex;align-items:center;justify-content:center;margin:10px 0 14px;padding:9px 14px;background:var(--ink);color:#fff;border:1px solid var(--ink);font-size:.88rem;font-weight:600}
+.map-link:hover{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+/* FORMULARIOS: campos, etiquetas, foco y boton de envio. */
+form label{display:block;font-size:.85rem;font-weight:600;margin:14px 0 6px}
+input,select,textarea{width:100%;padding:13px 14px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--text);font:inherit}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--gold);border-color:transparent}
+form .btn{margin-top:18px;width:100%;justify-content:center}
+.small{font-size:.78rem;color:var(--muted);margin-top:10px}
+.social{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.social a{border:1px solid var(--gold);border-radius:4px;padding:9px 14px;background:var(--gold);color:var(--ink);font-size:.88rem;font-weight:600;transition:background .2s,color .2s}
+.social a:hover{border-color:var(--gold);color:var(--gold)}
+/* CONTADORES: cantidad de columnas y aspecto de las cifras de trabajos realizados. */
+.stats-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:30px}
+.stat-box{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 18px;text-align:center}
+.stat-box strong{display:block;font-family:var(--serif);font-size:2.1rem;color:var(--gold);margin-bottom:4px}
+.stat-box span{color:var(--muted);font-size:.9rem}
+.work-stats{padding:60px 0}
+.work-stats h2{color:#fff}
+/* GALERIA: filtros y numero/tamano de columnas de las fotografias. */
+.gallery-filters{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 24px}
+.gallery-filters button{border:1px solid var(--line);background:var(--card);color:var(--text);padding:9px 16px;border-radius:999px;font:inherit;cursor:pointer}
+.gallery-filters button[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:#fff}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.gallery-photo{position:relative;display:block;padding:0;border:0;background:var(--ink);overflow:hidden;cursor:zoom-in;aspect-ratio:4/3}
+.gallery-photo img{width:100%;height:100%;object-fit:cover;transition:transform .35s,filter .35s}
+.gallery-photo:hover img,.gallery-photo:focus-visible img{transform:scale(1.06);filter:brightness(.78)}
+.gallery-photo:focus-visible{outline:3px solid var(--gold);outline-offset:3px;z-index:1}
+.gallery-photo-label{position:absolute;left:10px;bottom:10px;padding:5px 9px;background:rgba(22,18,15,.88);color:#fff;font-size:.75rem;font-weight:600;letter-spacing:.04em}
+/* VISOR: capa oscura y posicion de la foto y los controles anterior/siguiente. */
+.lightbox{position:fixed;inset:0;z-index:100;background:rgba(10,9,8,.96);display:none;align-items:center;justify-content:center;padding:64px 76px}
+.lightbox.visible{display:flex}
+.lightbox-open{overflow:hidden}
+.lightbox-content{display:flex;flex-direction:column;align-items:center;gap:14px;width:min(100%,1000px);height:100%;margin:0}
+.lightbox-content img{display:block;flex:1;min-height:0;max-width:100%;max-height:calc(100% - 58px);object-fit:contain}
+.lightbox-content figcaption{display:flex;justify-content:space-between;align-items:center;gap:20px;width:min(100%,800px);color:#fff;font-size:.92rem}
+.lightbox-caption{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lightbox-count{flex:none;color:#d6cbb8;font-variant-numeric:tabular-nums}
+.lightbox button{position:absolute;display:grid;place-items:center;width:48px;height:48px;border:1px solid #ffffff66;border-radius:50%;background:#ffffff18;color:#fff;font-size:2rem;line-height:1;cursor:pointer;transition:background .2s,border-color .2s}
+.lightbox button:hover,.lightbox button:focus-visible{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+.lightbox-close{top:16px;right:20px}
+.lightbox-prev{left:18px;top:50%;transform:translateY(-50%)}
+.lightbox-next{right:18px;top:50%;transform:translateY(-50%)}
+.hours tr.today td{font-weight:700;color:var(--text)}
+.hours tr.today td:first-child{color:var(--gold)}
+/* PROCESO Y EQUIPO: pasos, fotos de perfil y descripciones. */
+.mini-step{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px}
+.mini-step span{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:var(--ink);color:var(--gold);font-family:var(--serif);font-size:1.6rem;margin-bottom:14px}
+.mini-step h3{margin-bottom:8px;font-size:1.3rem}
+.mini-step p{margin:0;color:var(--muted)}
+.team-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:30px}
+.artist-card{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.artist-photo{display:grid;place-items:center;height:240px;background:linear-gradient(135deg,var(--ink),#3d2f26);color:var(--gold);font-family:var(--serif);font-size:4rem}
+.alt-photo{background:linear-gradient(135deg,#271f1a,#4a382b)}
+.gold-photo{background:linear-gradient(135deg,#1d1815,#5a4730)}
+.artist-body{padding:22px}
+.artist-body h3{margin-bottom:6px;font-size:1.7rem}
+.role{margin:0 0 10px;color:var(--gold);font-weight:600}
+.artist-body p:last-child{margin:0;color:var(--muted)}
+/* TARIFAS Y PREGUNTAS: tablas de precios, aviso de descuento y desplegables. */
+.price-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:30px}
+.price-table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.price-table caption{font-family:var(--serif);font-size:1.6rem;padding:18px 18px 10px;text-align:left;color:var(--text)}
+.price-table td{padding:10px 18px;border-top:1px solid var(--line);color:var(--muted)}
+.price-table td:last-child{text-align:right;color:var(--gold);font-weight:700}
+.deal{margin-top:24px;padding:16px 18px;border-left:4px solid var(--gold);background:rgba(200,162,74,.08);color:var(--muted)}
+.faq-list{display:grid;gap:14px;margin-top:30px}
+.faq-list details{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px}
+.faq-list summary{cursor:pointer;font-weight:600;color:var(--text)}
+.faq-list p{margin:12px 0 0;color:var(--muted)}
+/* PIE DE PAGINA y boton flotante de contacto. */
+footer{background:var(--ink);color:#cfc4b1;padding:50px 0 90px;font-size:.9rem}
+footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px}
+footer h4{color:#fff;margin:0 0 10px;font-family:var(--serif)}
+footer a{display:block;margin-bottom:6px}
+footer a:hover{color:var(--gold)}
+.legal{border-top:1px solid #3a3028;margin-top:30px;padding-top:18px;font-size:.8rem}
+.contact-fab{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:55;background:var(--gold);color:var(--ink);border-radius:999px;padding:14px 20px;font-weight:700;box-shadow:0 10px 26px rgba(0,0,0,.3);display:flex;gap:8px;align-items:center}
+/* Aparicion progresiva de contenido y respeto por la preferencia de menos movimiento. */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s,transform .7s}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.hero-art img{animation:none}html{scroll-behavior:auto}}
+/* TABLET: reorganiza servicios, portada, contacto y navegacion. */
+@media (max-width:960px){
+ .g4{grid-template-columns:repeat(2,1fr)}
+ .hero .wrap,.contact{grid-template-columns:1fr}
+ .hero-art{display:none}
+ .burger{display:block}
+ nav{position:absolute;left:0;right:0;top:72px;background:var(--ink);max-height:0;overflow:hidden;transition:max-height .4s}
+ nav.open-m{max-height:420px}
+ nav ul{flex-direction:column;gap:0;padding:8px 20px 20px}
+ nav li a{display:block;padding:14px 0;border-bottom:1px solid #3a3028}
+ .open{display:none}
+ .right .btn{display:none}
+}
+/* MOVIL: espacios, columnas, visor, enlaces y boton flotante. */
+@media (max-width:620px){
+ section{padding:60px 0}
+ .g4,.g2,footer .cols{grid-template-columns:1fr}
+ .stats-strip{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .lightbox{padding:64px 12px 24px}
+ .lightbox-content{gap:10px}
+ .lightbox-content figcaption{font-size:.82rem;padding:0 6px}
+ .lightbox button{width:42px;height:42px;font-size:1.9rem}
+ .lightbox-prev{left:8px;top:45%}
+ .lightbox-next{right:8px;top:45%}
+ .contact-fab span{display:none}
+}

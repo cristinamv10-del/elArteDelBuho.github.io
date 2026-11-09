@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contacto y citas · El Arte del Búho</title>
+<meta name="description" content="Contacta con El Arte del Búho para consultas y citas en Yuncos.">
+<link rel="icon" type="image/png" href="IMG/logo-small.png">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="pagina-servicio.css">
+</head>
+<body>
+<header class="subpage-header"><div class="wrap">
+ <a class="logo" href="El Arte del Búho · Web corporativa.html"><img src="IMG/logo-small.png" alt="">El Arte del <span>Búho</span></a>
+ <nav class="page-links" aria-label="Principal"><a href="El Arte del Búho · Web corporativa.html">Inicio</a><a href="El Arte del Búho · Web corporativa.html#contacto">Dirección y horario</a><a href="trabajos.html">Trabajos</a></nav>
+</div></header>
+<main class="subpage-main">
+ <section class="subpage-hero"><div class="wrap">
+  <span class="eyebrow">Contacto</span><h1>Cuéntanos qué necesitas</h1>
+  <p>Escríbenos por WhatsApp o llámanos para consultar disponibilidad, servicios y presupuestos.</p>
+  <p><a class="btn" href="tel:+34656989760">Llamar: +34 656 989 760</a></p>
+ </div></section>
+ <section class="subpage-content"><div class="wrap">
+  <h2>Enviar una consulta por WhatsApp</h2>
+  <p>Al enviar el formulario se abrirá WhatsApp con tu nombre, el servicio que te interesa y tu mensaje. No se guardan los datos en esta página.</p>
+  <form class="subpage-form" id="contactForm">
+   <label for="contactName">Nombre</label><input id="contactName" name="name" required autocomplete="name">
+   <label for="contactService">Servicio</label>
+   <select id="contactService" name="service"><option>Tatuaje</option><option>Piercing o microdermal</option><option>Micropigmentación</option><option>Fotografía</option><option>Otra consulta</option></select>
+   <label for="contactMessage">Mensaje</label><textarea id="contactMessage" name="message" rows="5" required></textarea>
+   <button class="btn" type="submit">Continuar por WhatsApp</button>
+  </form>
+  <p class="subpage-note">También puedes llamarnos al +34 656 989 760. Consulta la dirección y el horario en la <a href="El Arte del Búho · Web corporativa.html#contacto">página principal</a>.</p>
+ </div></section>
+</main>
+<footer class="subpage-footer"><div class="wrap"><span>El Arte del Búho · Yuncos, Toledo</span><a href="legal.html#privacidad">Privacidad</a></div></footer>
+<script>
+document.getElementById('contactForm').addEventListener('submit',function(event){
+ event.preventDefault();
+ var data=new FormData(event.currentTarget);
+ var message='Hola, soy '+data.get('name')+'. Me interesa: '+data.get('service')+'.\n\n'+data.get('message');
+ window.location.href='https://wa.me/34656989760?text='+encodeURIComponent(message);
+});
+</script>
+</body>
+</html>
